@@ -107,8 +107,24 @@ section{padding:80px 5%;}
 .contact-link:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
 footer{background:var(--navy);border-top:1px solid var(--border);text-align:center;padding:2rem 5%;font-size:0.8rem;color:var(--gray);}
 footer span{color:var(--gold);}
-@media(max-width:900px){#hero{grid-template-columns:1fr;}.hero-photo-side{display:none;}.about-grid{grid-template-columns:1fr;gap:2rem;}.skills-grid{grid-template-columns:1fr 1fr;}.downloads-grid{grid-template-columns:1fr;}.stats-bar{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.skills-grid{grid-template-columns:1fr;}.nav-links{display:none;}}
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr; padding-top:100px;}
+  .hero-photo-side{display:flex; justify-content:center; order:-1; margin-bottom:1.5rem;}
+  .hero-photo-frame{width:220px; height:270px;}
+  .photo-badge{bottom:10px; left:-10px; padding:0.5rem 0.8rem;}
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .downloads-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .skills-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hero-photo-frame{width:180px; height:220px;}
+  .hero-name{font-size:2.4rem;}
+  .hero-btns{flex-direction:column;}
+  .btn-primary,.btn-outline{text-align:center;}
+}
 </style>
 </head>
 <body>
