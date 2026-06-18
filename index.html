@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mir Safin Mostafiz | Financial Analytics Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:     #0a1628;
+    --navy2:    #0f2044;
+    --navy3:    #1a3a6b;
+    --gold:     #c9a84c;
+    --gold2:    #e8c96b;
+    --white:    #f0f4ff;
+    --gray:     #8a9bb5;
+    --card-bg:  #111e35;
+    --border:   rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,58,107,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  /* animated grid lines */
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-title {
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-title strong { color: var(--white); font-weight: 500; }
+  .hero-desc {
+    font-size: 0.95rem; color: var(--gray);
+    max-width: 520px; margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.75rem 1.8rem;
+    border-radius: 4px;
+    font-weight: 600; font-size: 0.88rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 0.75rem 1.8rem;
+    border-radius: 4px;
+    font-weight: 500; font-size: 0.88rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--gray);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 5%; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 24px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+  .section-sub {
+    font-size: 0.95rem; color: var(--gray);
+    max-width: 560px; margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--gray); font-size: 0.95rem;
+    margin-bottom: 1.2rem; line-height: 1.85;
+  }
+  .about-text p strong { color: var(--white); }
+  .about-details { display: flex; flex-direction: column; gap: 1.2rem; }
+  .detail-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1rem 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .detail-icon {
+    font-size: 1.3rem; flex-shrink: 0; margin-top: 2px;
+  }
+  .detail-label {
+    font-size: 0.72rem; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  .detail-value { font-size: 0.9rem; color: var(--white); font-weight: 500; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--navy); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .skill-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy2); }
+  .projects-grid { display: flex; flex-direction: column; gap: 2.5rem; }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--gold); }
+  .project-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    min-width: 64px;
+    text-align: center;
+  }
+  .project-body { }
+  .project-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--gold);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.6rem;
+  }
+  .project-desc {
+    font-size: 0.9rem; color: var(--gray);
+    line-height: 1.75; margin-bottom: 1rem;
+  }
+  .project-metrics {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .metric {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 0.35rem 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--gold2);
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stack-tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--gray);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .project-side { display: flex; flex-direction: column; gap: 0.6rem; min-width: 120px; align-items: flex-end; }
+  .project-badge {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--navy);
+    font-size: 0.7rem; font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  /* ── RESULTS TABLE ── */
+  .results-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+  .results-table th {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border);
+  }
+  .results-table td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--white);
+  }
+  .results-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .winner { color: var(--gold2); font-weight: 600; }
+
+  /* ── AI DISCLOSURE ── */
+  #disclosure { background: var(--navy); }
+  .disclosure-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    max-width: 780px;
+  }
+  .disclosure-box p { font-size: 0.92rem; color: var(--gray); line-height: 1.8; }
+  .disclosure-box p + p { margin-top: 0.8rem; }
+  .disclosure-box strong { color: var(--white); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy2); text-align: center; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.9rem 1.8rem;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.88rem; font-weight: 500;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.8rem;
+    color: var(--gray);
+  }
+  footer span { color: var(--gold); }
+
+  /* ── DIVIDER ── */
+  .gold-line {
+    width: 48px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-number { font-size: 2rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mir Safin Mostafiz</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#disclosure">AI Disclosure</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Financial Analytics Portfolio</div>
+    <h1 class="hero-name">Mir Safin<br><span>Mostafiz</span></h1>
+    <p class="hero-title">
+      <strong>BBA Finance Student</strong> · United International University, Dhaka
+    </p>
+    <p class="hero-desc">
+      Aspiring quantitative finance practitioner with hands-on experience in Python-based 
+      time-series modeling, volatility forecasting, and investment risk analytics. 
+      Focused on building reproducible, data-driven workflows for financial decision-making.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="https://www.linkedin.com/in/mir-safin-mostafiz" target="_blank" class="btn-outline">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number">3</span>
+    <span class="stat-label">Analytics Projects</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">1,258</span>
+    <span class="stat-label">Daily Observations</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">2</span>
+    <span class="stat-label">ML Models Built</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">53%</span>
+    <span class="stat-label">Best Dir. Accuracy</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-eyebrow">About Me</div>
+  <h2 class="section-title">Finance Meets Data Science</h2>
+  <div class="gold-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am a <strong>BBA Finance student</strong> at the School of Business & Economics, 
+        United International University (UIU), Dhaka, Bangladesh. I am building applied 
+        expertise in Python-based financial analytics, time-series modeling, and 
+        investment risk forecasting.
+      </p>
+      <p>
+        Across three project cycles in FIN 4333 Financial Analytics, I worked as 
+        <strong>team lead and primary technical contributor</strong> for Team Executive's Edge — 
+        handling everything from raw data acquisition and cleaning to model building, 
+        evaluation, and professional memo writing.
+      </p>
+      <p>
+        I am particularly interested in using <strong>reproducible analytics workflows</strong> 
+        to support investment decisions, corporate finance analysis, and equity risk assessment.
+        My goal is to bridge traditional finance with modern data science tools.
+      </p>
+    </div>
+    <div class="about-details">
+      <div class="detail-item">
+        <div class="detail-icon">🎓</div>
+        <div>
+          <div class="detail-label">Education</div>
+          <div class="detail-value">BBA Finance · United International University</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">📍</div>
+        <div>
+          <div class="detail-label">Location</div>
+          <div class="detail-value">Dhaka, Bangladesh</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">💼</div>
+        <div>
+          <div class="detail-label">Career Interest</div>
+          <div class="detail-value">Quantitative Finance · Investment Analytics · Risk Modeling</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">🛠️</div>
+        <div>
+          <div class="detail-label">Primary Tools</div>
+          <div class="detail-value">Python · Jupyter · pandas · TensorFlow · statsmodels</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">🏆</div>
+        <div>
+          <div class="detail-label">Course</div>
+          <div class="detail-value">FIN 4333 Financial Analytics · Team Executive's Edge</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-eyebrow">Technical Skills</div>
+  <h2 class="section-title">Skills Snapshot</h2>
+  <p class="section-sub">A complete toolkit built through hands-on financial analytics projects.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">⚙️ Programming & Data</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Jupyter</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Plotly</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">📈 Financial Modeling</div>
+      <div class="skill-tags">
+        <span class="tag">ARIMA</span>
+        <span class="tag">GARCH(1,1)</span>
+        <span class="tag">LSTM</span>
+        <span class="tag">ADF Test</span>
+        <span class="tag">Log Returns</span>
+        <span class="tag">Volatility Forecasting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">🤖 Machine Learning</div>
+      <div class="skill-tags">
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Keras</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">MinMaxScaler</span>
+        <span class="tag">Sliding Window</span>
+        <span class="tag">Time Series CV</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">📊 Model Evaluation</div>
+      <div class="skill-tags">
+        <span class="tag">RMSE</span>
+        <span class="tag">MAE</span>
+        <span class="tag">Directional Accuracy</span>
+        <span class="tag">AIC</span>
+        <span class="tag">Out-of-Sample Testing</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">🗄️ Data & Libraries</div>
+      <div class="skill-tags">
+        <span class="tag">yfinance</span>
+        <span class="tag">World Bank API</span>
+        <span class="tag">statsmodels</span>
+        <span class="tag">pmdarima</span>
+        <span class="tag">arch</span>
+        <span class="tag">openpyxl</span>
+        <span class="tag">python-docx</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">📝 Professional Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Investment Memo Writing</span>
+        <span class="tag">Data Cleaning</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Responsible AI Use</span>
+        <span class="tag">Team Leadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow">Project Portfolio</div>
+  <h2 class="section-title">FIN 4333 — Three Project Cycles</h2>
+  <p class="section-sub">Each project built on the previous, from raw data to forecasting to professional publication.</p>
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-body">
+        <div class="project-label">Project 1 · Analytics-Ready Dataset</div>
+        <div class="project-title">Grameenphone Ltd. — Financial Analytics Dataset</div>
+        <p class="project-desc">
+          Built a monthly analytics-ready dataset for Grameenphone Ltd. (GP), Bangladesh's largest 
+          telecom company, by combining stock price data from Yahoo Finance, firm-level financial 
+          variables, and Bangladesh macroeconomic indicators sourced via the World Bank API. 
+          Implemented a rigorous data alignment rule, quality checks, and a full data dictionary.
+        </p>
+        <div class="project-metrics">
+          <span class="metric">60 Monthly Rows</span>
+          <span class="metric">12 Variables</span>
+          <span class="metric">2020–2024</span>
+          <span class="metric">World Bank API</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">pandas</span>
+          <span class="stack-tag">yfinance</span>
+          <span class="stack-tag">World Bank API</span>
+          <span class="stack-tag">openpyxl</span>
+          <span class="stack-tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="project-badge">Completed</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-body">
+        <div class="project-label">Project 2 · Market Risk & Volatility Forecasting</div>
+        <div class="project-title">NVIDIA (NVDA) — GARCH(1,1) Volatility Pipeline</div>
+        <p class="project-desc">
+          Estimated GARCH(1,1) volatility on NVIDIA daily log returns, produced a 30-day volatility 
+          outlook, and prepared a professional investment risk memo for an investment committee. 
+          Identified NVDA as HIGH RISK with annualized volatility of 41.56%. Built ARIMA(2,0,3) 
+          as the mean equation and ran full AI-audit documentation.
+        </p>
+        <div class="project-metrics">
+          <span class="metric">ARIMA(2,0,3)</span>
+          <span class="metric">GARCH(1,1)</span>
+          <span class="metric">Ann. Vol: 41.56%</span>
+          <span class="metric">30-Day Forecast: 49.19%</span>
+          <span class="metric">HIGH RISK ⚠️</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">arch</span>
+          <span class="stack-tag">statsmodels</span>
+          <span class="stack-tag">pmdarima</span>
+          <span class="stack-tag">Matplotlib</span>
+          <span class="stack-tag">python-docx</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="project-badge">Completed</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-body">
+        <div class="project-label">Project 3 · Return Forecasting — ARIMA vs LSTM</div>
+        <div class="project-title">NVIDIA (NVDA) — ARIMA vs LSTM Return Forecasting</div>
+        <p class="project-desc">
+          Compared a classical ARIMA benchmark against a deep-learning LSTM network for forecasting 
+          NVIDIA daily log returns. Used chronological 70/15/15 train-validation-test split with no 
+          data leakage. ARIMA(1,0,0) was selected as the recommended model due to comparable RMSE 
+          and superior directional accuracy, confirming that additional LSTM complexity is not justified 
+          for this highly efficient large-cap equity.
+        </p>
+        <div class="project-metrics">
+          <span class="metric">ARIMA(1,0,0) ✅ Selected</span>
+          <span class="metric">AIC: −4208.71</span>
+          <span class="metric">1,258 Observations</span>
+          <span class="metric">30-Day Outlook: +0.0021 📈</span>
+        </div>
+
+        <!-- Model Comparison Table -->
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Test MAE</th>
+              <th>Test RMSE</th>
+              <th>Dir. Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="winner">ARIMA(1,0,0) ✅</td>
+              <td>0.025625</td>
+              <td>0.033266</td>
+              <td class="winner">53.44%</td>
+            </tr>
+            <tr>
+              <td>LSTM (50u, w=10)</td>
+              <td>0.025160</td>
+              <td>0.032646</td>
+              <td>50.26%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br/>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">TensorFlow/Keras</span>
+          <span class="stack-tag">statsmodels</span>
+          <span class="stack-tag">pmdarima</span>
+          <span class="stack-tag">scikit-learn</span>
+          <span class="stack-tag">Plotly</span>
+          <span class="stack-tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="project-badge">Completed</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AI DISCLOSURE -->
+<section id="disclosure">
+  <div class="section-eyebrow">Transparency</div>
+  <h2 class="section-title">AI Disclosure</h2>
+  <div class="gold-line"></div>
+  <div class="disclosure-box">
+    <p>
+      <strong>AI tools were used to assist with Python code generation, document structuring, 
+      and analytical drafting</strong> across all three projects in this portfolio. Specifically, 
+      Claude (Anthropic) was used as an AI assistant throughout the project workflow.
+    </p>
+    <p>
+      All AI outputs were <strong>independently reviewed, tested, and verified</strong> by team members 
+      before inclusion in any deliverable. Model results (RMSE, MAE, AIC, directional accuracy) 
+      were cross-checked against raw notebook outputs. No AI-generated content was submitted 
+      without manual verification and correction where necessary.
+    </p>
+    <p>
+      Final results, interpretations, and investment conclusions represent the 
+      <strong>team's own analysis and judgment</strong>. This portfolio is submitted in full 
+      compliance with the responsible AI use guidelines of FIN 4333, UIU.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Get In Touch</div>
+  <h2 class="section-title">Connect With Me</h2>
+  <p class="section-sub" style="margin: 0 auto 0;">
+    Open to internship opportunities, collaborations, and discussions on financial analytics.
+  </p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/mir-safin-mostafiz" target="_blank" class="contact-link">
+      🔗 LinkedIn Profile
+    </a>
+    <a href="https://github.com/mirsafinmostafiz" target="_blank" class="contact-link">
+      💻 GitHub Repository
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Mir Safin Mostafiz</span> · FIN 4333 Financial Analytics · Team Executive's Edge · United International University</p>
+</footer>
+
+</body>
+</html>
