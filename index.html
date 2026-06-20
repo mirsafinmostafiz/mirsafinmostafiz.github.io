@@ -74,7 +74,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .hero-contacts{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;}
 .hero-contact-item{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--gray);text-decoration:none;transition:color 0.2s;}
 .hero-contact-item:hover{color:var(--gold);}
-.hero-contact-item .icon-svg{width:15px;height:15px;color:var(--gold);}
+.hero-contact-item svg{width:15px;height:15px;color:var(--gold);flex-shrink:0;}
 
 .hero-right{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;}
 .photo-container{position:relative;width:420px;height:520px;}
@@ -96,7 +96,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .card-role{bottom:140px;left:-56px;animation:float-card 6s ease-in-out infinite;animation-delay:1s;}
 @keyframes float-card{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 .fc-icon-wrap{width:30px;height:30px;border-radius:7px;background:rgba(201,168,76,0.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.fc-icon-wrap .icon-svg{width:16px;height:16px;color:var(--gold);}
+.fc-icon-wrap svg{width:16px;height:16px;color:var(--gold);flex-shrink:0;}
 .fc-label{font-family:"JetBrains Mono",monospace;font-size:0.58rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.2rem;}
 .fc-value{font-size:0.83rem;color:var(--white);font-weight:600;}
 .fc-sub{font-size:0.68rem;color:var(--gray);}
@@ -127,7 +127,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .about-card{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:center;transition:border-color 0.2s,transform 0.2s;}
 .about-card:hover{border-color:var(--border);transform:translateX(6px);}
 .ac-icon-wrap{width:38px;height:38px;border-radius:8px;background:rgba(201,168,76,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ac-icon-wrap .icon-svg{width:19px;height:19px;color:var(--gold);}
+.ac-icon-wrap svg{width:19px;height:19px;color:var(--gold);flex-shrink:0;}
 .ac-label{font-size:0.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;font-family:"JetBrains Mono",monospace;margin-bottom:0.25rem;}
 .ac-value{font-size:0.87rem;color:var(--white);font-weight:500;}
 
@@ -138,7 +138,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .ach-card:hover{border-color:var(--border);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
 .ach-card:hover::before{transform:scaleX(1);}
 .ach-icon-wrap{width:48px;height:48px;border-radius:10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
-.ach-icon-wrap .icon-svg{width:24px;height:24px;color:var(--gold);}
+.ach-icon-wrap svg{width:24px;height:24px;color:var(--gold);flex-shrink:0;}
 .ach-title{font-family:"Playfair Display",serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
 .ach-desc{font-size:0.82rem;color:var(--gray);line-height:1.6;}
 .ach-year{font-family:"JetBrains Mono",monospace;font-size:0.7rem;color:var(--gold);margin-top:0.8rem;}
@@ -171,7 +171,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .skill-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:1.8rem;transition:all 0.3s;}
 .skill-card:hover{border-color:var(--border);transform:translateY(-4px);}
 .skill-card-icon-wrap{width:42px;height:42px;border-radius:9px;background:rgba(201,168,76,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
-.skill-card-icon-wrap .icon-svg{width:21px;height:21px;color:var(--gold);}
+.skill-card-icon-wrap svg{width:21px;height:21px;color:var(--gold);flex-shrink:0;}
 .skill-card-title{font-family:"Playfair Display",serif;font-size:0.95rem;font-weight:700;color:var(--gold);margin-bottom:1.2rem;}
 .tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
 .tag{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);color:var(--white);font-family:"JetBrains Mono",monospace;font-size:0.68rem;padding:0.28rem 0.65rem;border-radius:3px;letter-spacing:0.04em;transition:all 0.2s;}
@@ -213,7 +213,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .pub-bg{background:var(--navy2);}
 .pub-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:2rem 2.5rem;max-width:860px;display:flex;gap:1.5rem;}
 .pub-icon-wrap{width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.pub-icon-wrap .icon-svg{width:25px;height:25px;color:var(--gold);}
+.pub-icon-wrap svg{width:25px;height:25px;color:var(--gold);flex-shrink:0;}
 .pub-type{font-family:"JetBrains Mono",monospace;font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.8rem;}
 .pub-title{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:var(--white);line-height:1.5;margin-bottom:0.8rem;}
 .pub-meta{font-size:0.82rem;color:var(--gray);line-height:1.7;}
@@ -265,7 +265,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .ai-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:1.8rem;transition:all 0.3s;}
 .ai-card:hover{border-color:var(--border);transform:translateY(-4px);}
 .ai-card-icon-wrap{width:46px;height:46px;border-radius:10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
-.ai-card-icon-wrap .icon-svg{width:23px;height:23px;color:var(--gold);}
+.ai-card-icon-wrap svg{width:23px;height:23px;color:var(--gold);flex-shrink:0;}
 .ai-card-title{font-family:"Playfair Display",serif;font-size:0.95rem;font-weight:700;color:var(--gold);margin-bottom:0.8rem;}
 .ai-card-text{font-size:0.83rem;color:var(--gray);line-height:1.75;}
 
@@ -274,7 +274,7 @@ nav.scrolled{background:rgba(7,15,31,0.97);backdrop-filter:blur(20px);border-bot
 .contact-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-top:2.5rem;}
 .contact-btn{display:flex;align-items:center;gap:0.65rem;background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:1rem 2rem;color:var(--white);text-decoration:none;font-size:0.85rem;font-weight:500;transition:all 0.2s;}
 .contact-btn:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.3);}
-.contact-btn .icon-svg{width:17px;height:17px;color:var(--gold);}
+.contact-btn svg{width:17px;height:17px;color:var(--gold);flex-shrink:0;}
 .contact-btn:hover .icon-svg{color:var(--gold2);}
 
 footer{background:var(--navy);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;}
